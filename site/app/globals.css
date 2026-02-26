@@ -1,0 +1,155 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@theme {
+  --font-heading: var(--font-jakarta), -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-body: var(--font-jakarta), -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-mono: var(--font-mono), ui-monospace, monospace;
+
+  --color-accent: #286983;
+  --color-accent-light: #56949f;
+  --color-highlight: #ea9d34;
+  --color-highlight-light: #f6c177;
+  --color-tertiary: #d7827e;
+  --color-tertiary-light: #ebbcba;
+  --color-quaternary: #907aa9;
+  --color-quaternary-light: #c4a7e7;
+  --color-bg: #fafafa;
+  --color-surface: #ffffff;
+  --color-heading: #18181b;
+  --color-body: #52525b;
+  --color-muted: #a1a1aa;
+  --color-border: #e4e4e7;
+}
+
+@layer base {
+  body {
+    font-family: var(--font-body);
+    color: var(--color-body);
+    background-color: var(--color-bg);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-heading);
+    color: var(--color-heading);
+    letter-spacing: -0.025em;
+  }
+}
+
+/* Animations */
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-up {
+  animation: fade-up 0.6s ease-out forwards;
+  opacity: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-fade-up {
+    animation: none;
+    opacity: 1;
+  }
+}
+
+/* Dark mode */
+.dark {
+  --color-bg: #232136;
+  --color-surface: #2a273f;
+  --color-heading: #e0def4;
+  --color-body: #908caa;
+  --color-muted: #6e6a86;
+  --color-border: #393552;
+  --color-accent: #9ccfd8;
+  --color-accent-light: #9ccfd8;
+  --color-highlight: #f6c177;
+  --color-highlight-light: #f6c177;
+  --color-tertiary: #ebbcba;
+  --color-tertiary-light: #ebbcba;
+  --color-quaternary: #c4a7e7;
+  --color-quaternary-light: #c4a7e7;
+}
+
+/* Fade-in-left for timeline */
+@keyframes fade-in-left {
+  from { opacity: 0; transform: translateX(-20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+/* Scale-up for stats */
+@keyframes scale-up {
+  from { opacity: 0; transform: scale(0.8); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* Breathing pulse for avatar ring — derives color from active scheme */
+@keyframes ring-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--color-accent) 20%, transparent); }
+  50% { box-shadow: 0 0 0 12px transparent; }
+}
+
+/* Accent glow for hover effects (used by interest badges, etc.) */
+.accent-glow-hover:hover {
+  box-shadow: 0 0 12px color-mix(in srgb, var(--color-accent) 30%, transparent);
+}
+
+/* Status dot pulse */
+@keyframes dot-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+.animate-fade-in-left {
+  animation: fade-in-left 0.6s ease-out forwards;
+  opacity: 0;
+}
+
+.animate-scale-up {
+  animation: scale-up 0.6s ease-out forwards;
+  opacity: 0;
+}
+
+.animate-ring-pulse {
+  animation: ring-pulse 3s ease-in-out infinite;
+}
+
+.animate-dot-pulse {
+  animation: dot-pulse 2s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-fade-in-left,
+  .animate-scale-up {
+    animation: none;
+    opacity: 1;
+  }
+  .animate-ring-pulse,
+  .animate-dot-pulse {
+    animation: none;
+  }
+}
+
+/* External link arrow slide-in */
+a[target="_blank"]:not([aria-label])::after {
+  content: " \2197";
+  display: inline-block;
+  opacity: 0;
+  transform: translateX(-4px);
+  transition: all 0.2s ease;
+  font-size: 0.75em;
+}
+
+a[target="_blank"]:not([aria-label]):hover::after {
+  opacity: 1;
+  transform: translateX(0);
+}
