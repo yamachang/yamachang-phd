@@ -15,6 +15,8 @@ export interface Publication {
   status: PublicationStatus;
   tags: string[];
   pdfUrl?: string;
+  openAccessUrl?: string;
+  preprintUrl?: string;
   abstract?: string;
   isFirstAuthor?: boolean;
 }

@@ -76,6 +76,26 @@ export function PublicationRow({ pub }: { pub: Publication }) {
             DOI
           </a>
         )}
+        {pub.openAccessUrl && (
+          <a
+            href={pub.openAccessUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-mono text-xs text-[var(--color-accent)] hover:underline"
+          >
+            Open Access
+          </a>
+        )}
+        {pub.preprintUrl && (
+          <a
+            href={pub.preprintUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-mono text-xs text-[var(--color-accent)] hover:underline"
+          >
+            Preprint
+          </a>
+        )}
         {pub.pdfUrl && (
           <a
             href={pub.pdfUrl}
