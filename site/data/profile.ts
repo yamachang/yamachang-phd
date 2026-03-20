@@ -43,6 +43,7 @@ export const profile: Profile = {
     },
     { platform: "GitHub", url: "https://github.com/yamachang", icon: "github" },
     { platform: "CV", url: "/cv.pdf", icon: "file-text" },
+    { platform: "Resume", url: "/resume.pdf", icon: "file" },
   ],
   email: "yama.chang.gr@dartmouth.edu",
 };
